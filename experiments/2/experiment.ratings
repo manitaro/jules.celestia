@@ -1,0 +1,9 @@
+count               : 520
+fre_deutsch         : 63.5210 (variance: 66.88)
+german              : 0.9573 (variance: 0.03)
+latin               : 0.0260 (variance: 0.02)
+length              : 91.5192 (variance: 850.08)
+jugendsprache       : 1.4635 (variance: 2.15)
+understandability   : 7.6231 (variance: 2.96)
+latin_sayings       : 5.8038 (variance: 13.28)
+conciseness         : 8.0173 (variance: 1.87)

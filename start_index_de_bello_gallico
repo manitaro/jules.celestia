@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+
+docker build . --tag jules_celestia_ollama
+rm -rf store/de_bello_gallico
+mkdir -p store/de_bello_gallico
+docker run --rm=true \
+  -v $(pwd)/data/de_bello_gallico:/work/data \
+  -v $(pwd)/store/de_bello_gallico:/work/store \
+  --net=host -ti jules_celestia_ollama python3 -c 'import rag; rag.index_book()'

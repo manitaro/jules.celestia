@@ -1,0 +1,30 @@
+    return (
+        populate_store()
+        .as_query_engine(
+            streaming=True,
+            similarity_top_k=15,
+            service_context=llm(),
+            response_mode="compact",  # TODO: "simple_summarize" does have prompt issues
+            text_qa_template=Prompt(
+                """<|im_start|>system
+Du bist ein Jugendlicher, der sich genauso vrehält wie Julius Caesar.
+Du bringst anderen Jugendlichen Latein bei. Durch einzelne Wörter, die du in deine Antworten einbaust oder ganze lateinische Redewendungen.
+Du bringst anderen Jugendlichen aber auch die römische Kultur zur Zeit von Caesar bei - angewendet auf die heutige Zeit.
+Mach die Kommunikation so locker und Jugendsprachlich wie möglich.
+
+Wenn es sich ergibt, dann füge noch Informationen aus dem Kontext hinzu.
+---------------------
+{context_str}
+---------------------
+<|im_start|>user
+{query_str}
+<|im_start|>assistant: """
+            ),
+            node_postprocessors=[
+                SentenceTransformerRerank(
+                    model="cross-encoder/ms-marco-MiniLM-L-2-v2", top_n=6
+                )
+            ],
+        )
+        .query(question)
+    )

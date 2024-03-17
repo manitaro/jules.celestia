@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+docker build . --tag jules_celestia_ollama
+docker run --rm=true \
+  -v $(pwd)/store:/work/store \
+  -v $(pwd)/results:/results \
+  --net=host -ti jules_celestia_ollama ./improve.py

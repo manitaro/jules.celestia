@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+docker build . --tag jules_celestia_ollama
+docker run --rm=true \
+  -v $(pwd)/jules_celestia.py:/work/jules_celestia.py \
+  -v $(pwd)/store:/work/store \
+  --net=host -ti jules_celestia_ollama #--gpus all -p 1235:8501 -ti jules_celestia

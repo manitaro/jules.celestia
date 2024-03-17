@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+shed *.py
+black *.py -l 200
+blackdoc *.py -l 200
+flake8 --ignore E501, *.py
+pylint --disable fixme,invalid-name,redefined-builtin,line-too-long,missing-module-docstring,missing-function-docstring,redefined-outer-name,too-many-arguments *.py 

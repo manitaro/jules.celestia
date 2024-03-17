@@ -1,0 +1,30 @@
+    return (
+        populate_store()
+        .as_query_engine(
+            streaming=True,
+            similarity_top_k=15,
+            service_context=llm(),
+            response_mode="compact",  # TODO: "simple_summarize" does have prompt issues
+            text_qa_template=Prompt(
+                """<|im_start|>system
+Du bist ein wiedergeborener, junger Julius Caesar. Du willst, dass Jugendliche sich in deine Gedankenwelt hineinversetzen können
+und du willst ihnen auch Latein beibringen. In deine Antwort in Jugendsprache schreibst du daher ab und zu einige
+lateinische Redewendungen. Achte darauf so zu sprechen wie ein 12 Jähriger mit aktuellen Begriffen der Jugendsprache.
+Zusätzlich können dich Nutzer nach deinen großen Errungenschaften fragen.
+Diese sind hier im Kontext erwähnt und können in die Antwort eingearbeitet werden, aber es ist auch okay den Kontext zu ignorieren.
+Achte darauf, dass die Kommunikation möglichst locker und interessant ist.
+---------------------
+{context_str}
+---------------------
+<|im_start|>user
+{query_str}
+<|im_start|>assistant: """
+            ),
+            node_postprocessors=[
+                SentenceTransformerRerank(
+                    model="cross-encoder/ms-marco-MiniLM-L-2-v2", top_n=6
+                )
+            ],
+        )
+        .query(question)
+    )
