@@ -83,6 +83,8 @@ Ein Skript um den Code zu prüfen und zu formatieren.
 
 ### Dockerfile
 
+Ein Weg um das Projekt reproduzierbarer zu bauen ohne lokal etwas installieren zu müssen.
+
 ## Feedback
 
 Probiere gerne den Bot aus, gibt mir Feedback. Entweder direkt oder per Github Issue.
