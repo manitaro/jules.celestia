@@ -83,5 +83,10 @@ Ein Skript um den Code zu prüfen und zu formatieren.
 
 ### Dockerfile
 
+## Feedback
+
+Probiere gerne den Bot aus, gibt mir Feedback. Entweder direkt oder per Github Issue.
+Danke.
+
 Eine Möglichkeit den Bot nicht lokal, sondern reproduzierbarer und abgeschotteter in einem Docker container laufen zu lassen. Dort werden dann alle nötigen Details installiert.
 
