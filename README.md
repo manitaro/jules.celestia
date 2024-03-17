@@ -66,3 +66,22 @@ Enthalten sind auch Referenzen auf Doku und technische Details.
 ### improve.py
 
 Hier ist der Experimentiercode. Ändere dein Prompt in _rag.py_ ab und führe dann _improve.py_ aus. Dein neuer Prompt wird dann bewertet. Werden die Ergebnisse besser, dann nutze deinen neuen Prompt, ansonsten geh zurück zu deinem alten Prompt.
+
+## Was ist sonst noch im Repository?
+
+### store/
+
+Hier sind Caesars Bücher. In indizierter Form, so dass sie direkt von _rag.py_ genutzt werden können.
+
+### experiments/
+
+Dort sind alle 6 Experimente aus der Jugend forscht Arbeit. Bis zu 5.000 Durchläufe. Erste Analysen sind in meiner Jugend forscht Arbeit dazu.
+
+### ci
+
+Ein Skript um den Code zu prüfen und zu formatieren.
+
+### Dockerfile
+
+Eine Möglichkeit den Bot nicht lokal, sondern reproduzierbarer und abgeschotteter in einem Docker container laufen zu lassen. Dort werden dann alle nötigen Details installiert.
+
