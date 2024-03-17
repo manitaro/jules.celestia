@@ -6,10 +6,6 @@ import streamlit
 
 import rag
 
-# TODOs:
-# Loop in Docker
-# SSL
-
 
 @streamlit.cache_resource
 def llm():
